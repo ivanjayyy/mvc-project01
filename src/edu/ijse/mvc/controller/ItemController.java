@@ -4,10 +4,20 @@
  */
 package edu.ijse.mvc.controller;
 
+import edu.ijse.mvc.dto.ItemDto;
+import edu.ijse.mvc.model.ItemModel;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author ivanj
  */
 public class ItemController {
+    private ItemModel itemModel = new ItemModel();
     
+    public ArrayList<ItemDto> getAll() throws ClassNotFoundException, SQLException {
+        ArrayList<ItemDto> resp = itemModel.getAll();
+        return resp;
+    }
 }
