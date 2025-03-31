@@ -52,7 +52,7 @@ public class ItemView extends javax.swing.JFrame {
         btnSave1 = new javax.swing.JButton();
         btnUpdate1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelOne = new javax.swing.JTable();
+        itemTable = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,7 +112,7 @@ public class ItemView extends javax.swing.JFrame {
             }
         });
 
-        tabelOne.setModel(new javax.swing.table.DefaultTableModel(
+        itemTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +123,7 @@ public class ItemView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tabelOne);
+        jScrollPane2.setViewportView(itemTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,6 +226,7 @@ public class ItemView extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave1;
     private javax.swing.JButton btnUpdate1;
+    private javax.swing.JTable itemTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -235,7 +236,6 @@ public class ItemView extends javax.swing.JFrame {
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblQoh;
     private javax.swing.JLabel lblSize;
-    private javax.swing.JTable tabelOne;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtDesc;
     private javax.swing.JTextField txtPrice;
@@ -245,14 +245,14 @@ public class ItemView extends javax.swing.JFrame {
 
 
     public void loadTable() {
-        String columns[] = {"Item Code", "Item Description", "Pack Size", "Unit Size", "QoH"};
+        String columns[] = {"Item Code", "Item Description", "Pack Size", "Unit Price", "QoH"};
         DefaultTableModel dtm = new DefaultTableModel(columns, 0) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
         
-        tabelOne.setModel(dtm);
+        itemTable.setModel(dtm);
         
         try {
             ArrayList<ItemDto> items = itemController.getAll();
